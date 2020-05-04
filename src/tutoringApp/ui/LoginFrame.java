@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
@@ -20,7 +21,7 @@ import javax.swing.WindowConstants;
 public class LoginFrame extends JFrame {
     
     private JTextField usernameField;
-    private JTextField passwordField;
+    private JPasswordField passwordField;
     private JButton submitButton;
     
     //constructor class "LoginFrame"
@@ -54,7 +55,7 @@ public class LoginFrame extends JFrame {
         
         //declare instance variables for frame components
         usernameField = new JTextField();
-        passwordField = new JTextField();
+        passwordField = new JPasswordField();
         submitButton = new JButton();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE); 

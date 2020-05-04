@@ -1,5 +1,5 @@
 
-//import the necessary packages
+//import the necessary packages/classes
 package tutoringApp.ui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -8,24 +8,28 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
-import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
-public class StudentMenu extends JFrame {
+//Declaration class "ReportMenu"
+public class ReportMenu extends JFrame {
+    
+    //declaration instance variables class "ReportMenu"
+    private JButton submitButton;
+    private JLabel reportLabel;
+    private JLabel reportTypeLabel;
+    private JComboBox reportBox;
     
     
-    private JButton schedulingButton;
-    private JButton reportsButton;
-    private JButton logoutButton;
-    private JLabel studentLabel;
-    
-    //constructor class "LoginFrame"
-    public StudentMenu() {
+    //constructor class "ReportMenu"
+    public ReportMenu() {
         //attempt to set system look and feel
         try {
             UIManager.setLookAndFeel(
@@ -54,67 +58,66 @@ public class StudentMenu extends JFrame {
     private JPanel initComponents() {
         
         //declare instance variables for frame components
+        String reportType[] = {"Student","Tutor", "Administrator"};
+        submitButton = new JButton();
+        reportLabel = new JLabel();
+        reportTypeLabel = new JLabel();
+        reportBox = new JComboBox(reportType);
         
-        schedulingButton = new JButton();
-        reportsButton = new JButton();
-        logoutButton = new JButton();
-        studentLabel = new JLabel();
-
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE); 
         
         // set button dimensions and default text
         Dimension d = new Dimension(150,35);
-        schedulingButton.setText("Scheduling");
-        schedulingButton.setPreferredSize(d);
-        reportsButton.setText("Reports");
-        reportsButton.setPreferredSize(d);
-        logoutButton.setText("Logout");
-        logoutButton.setPreferredSize(d);
-        studentLabel.setText("Student Menu");
-        studentLabel.setPreferredSize(d);
-        studentLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        studentLabel.setVerticalAlignment(SwingConstants.CENTER);
         Font font = new Font("Calibri", Font.BOLD, 20);
-        studentLabel.setFont(font);
-        
+        reportLabel.setText("Get Report");
+        reportLabel.setFont(font);
+        reportLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        reportLabel.setVerticalAlignment(SwingConstants.CENTER);
+        reportTypeLabel.setText("Report Type:");
+        submitButton.setPreferredSize(d);
+        submitButton.setText("Submit");
+        reportBox.setPreferredSize(d);
     
         
         
-        //action listener for the StudentMenu buttons
-        schedulingButton.addActionListener((ActionEvent) -> {
-            //todo button action logic
-            
-        });
-        reportsButton.addActionListener((ActionEvent) -> {
+        //action listener for the ReportMenu buttons
+ 
+        submitButton.addActionListener((ActionEvent) -> {
             //todo button action logic
         });
-        logoutButton.addActionListener((ActionEvent) -> {
-            //todo button action logic
-        });
+        
         
         //declaration containing panel
         JPanel menuPanel = new JPanel();
 
+        //JLabel panel
+        JPanel labelPanel = new JPanel();
+        labelPanel.setLayout(new BorderLayout());
+        labelPanel.setBorder(new EmptyBorder(30, 0, 0, 0));
+        labelPanel.add(reportLabel, BorderLayout.CENTER);
         
-        
+        //JComboBox panel
+        JPanel boxPanel = new JPanel();
+        boxPanel.setLayout(new GridBagLayout());
+        boxPanel.add(reportBox, 
+                getConstraints(0, 0, GridBagConstraints.LINE_END));
         
         //JButton panel
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridBagLayout());
-        buttonPanel.add(studentLabel,
-                getConstraints(0, 0, GridBagConstraints.LINE_END));
-        buttonPanel.add(schedulingButton, 
-                getConstraints(0, 1, GridBagConstraints.LINE_END));
-        buttonPanel.add(reportsButton, 
-                getConstraints(0, 2, GridBagConstraints.LINE_END));
-        buttonPanel.add(logoutButton,
-                getConstraints(0, 3, GridBagConstraints.LINE_END));
+        buttonPanel.setBorder(new EmptyBorder(0,0,50,0));
+        buttonPanel.add(submitButton,
+                getConstraints(0,0, GridBagConstraints.LINE_END));
+                
+        
         
         
 
-        // add panel to containing panel
+        // add panels to containing panel
         menuPanel.setLayout(new BorderLayout());
-        menuPanel.add(buttonPanel, BorderLayout.CENTER);
+        menuPanel.add(labelPanel, BorderLayout.NORTH);
+        menuPanel.add(boxPanel, BorderLayout.CENTER);
+        menuPanel.add(buttonPanel, BorderLayout.SOUTH);
         
         //return components
         return menuPanel;       
@@ -134,5 +137,4 @@ public class StudentMenu extends JFrame {
     
     
 }
-
 

@@ -1,11 +1,10 @@
 package main;
 
-import tutoringApp.ui.StudentMenu;
-import tutoringApp.ui.TutorMenu;
+import tutoringApp.ui.ReportMenu;
 
 public class Main {
 
     public static void main(String[] args) {
-        TutorMenu frame = new TutorMenu();
+        ReportMenu frame = new ReportMenu();
     }
 }
