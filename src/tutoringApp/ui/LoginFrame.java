@@ -1,6 +1,8 @@
 
 //import the necessary packages
 package tutoringApp.ui;
+import business.Student;
+import business.Tutor;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -17,15 +19,20 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+
 //declaration class "LoginFrame"
 public class LoginFrame extends JFrame {
     
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JButton submitButton;
+    private Object user;
     
     //constructor class "LoginFrame"
-    public LoginFrame() {
+    public LoginFrame( Object user) {
+        
+        this.user = user;
+        
         //attempt to set system look and feel
         try {
             UIManager.setLookAndFeel(
@@ -45,7 +52,9 @@ public class LoginFrame extends JFrame {
         
         
         setLayout(new BorderLayout());
+        
         add(initComponents(), BorderLayout.CENTER);
+        
         
         setVisible(true);        
     }
@@ -57,6 +66,7 @@ public class LoginFrame extends JFrame {
         usernameField = new JTextField();
         passwordField = new JPasswordField();
         submitButton = new JButton();
+        
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE); 
         
@@ -71,7 +81,8 @@ public class LoginFrame extends JFrame {
         
         //action listener for the submit button
         submitButton.addActionListener((ActionEvent) -> {
-            //todo button action logic
+            doSubmitButton(this.user);
+            
         });
         
         //declaration containing panel
@@ -104,6 +115,20 @@ public class LoginFrame extends JFrame {
         //return components
         return loginPanel;       
     }
+    
+    
+    private void doSubmitButton(Object user){
+        
+        if (user instanceof Student) {
+            this.dispose();
+            StudentMenu frame = new StudentMenu();
+        }else if (user instanceof Tutor){
+            this.dispose();
+            TutorMenu frame = new TutorMenu();
+        }
+    }
+    
+    
     
     //private method to create GridBagConstraints "dynamic"
     private GridBagConstraints getConstraints(int x, int y, int anchor) {

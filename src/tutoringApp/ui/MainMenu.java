@@ -32,6 +32,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
+import business.Student;
+import business.Tutor;
 
 public class MainMenu extends JFrame {
     
@@ -93,19 +95,21 @@ public class MainMenu extends JFrame {
         //action listener for the mainMenu buttons
         studentButton.addActionListener((ActionEvent) -> {
             //todo button action logic
-            
-            LoginFrame login = new LoginFrame();
+            Student student = new Student();
+            LoginFrame login = new LoginFrame(student);
             this.dispose();
         });
         tutorButton.addActionListener((ActionEvent) -> {
             //todo button action logic
-            LoginFrame login = new LoginFrame();
+            Tutor tutor = new Tutor();
+            LoginFrame login = new LoginFrame(tutor);
             this.dispose();
         });
+        
         adminButton.addActionListener((ActionEvent) -> {
             //todo button action logic
-            LoginFrame login = new LoginFrame();
-            this.dispose();
+//            LoginFrame login = new LoginFrame();
+//            this.dispose();
         });
         
         //declaration containing panel

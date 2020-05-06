@@ -14,6 +14,7 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -79,7 +80,8 @@ public class TutorMenu extends JFrame{
         tutorLabel.setFont(font);
         
         availabilityButton.addActionListener((ActionEvent) -> {
-            //todo 
+            this.dispose();
+            TableFrame availability = new  TableFrame();
         });
         reportsButton.addActionListener((ActionEvent) -> {
             //todo
@@ -88,8 +90,9 @@ public class TutorMenu extends JFrame{
             //todo
         });
         logoutButton.addActionListener((ActionEvent) -> {
-            //Placeholder for logging out
+            
             super.dispose();
+            doLogoutButton();
         });
         
         JPanel menuPanel = new JPanel();
@@ -111,6 +114,13 @@ public class TutorMenu extends JFrame{
         menuPanel.add(buttonPanel, BorderLayout.CENTER);
         
         return menuPanel; 
+    }
+    
+    private void doLogoutButton() {
+        JOptionPane.showMessageDialog(rootPane, "Logged Out Successfully",
+                "Logout", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+        
     }
     
     private GridBagConstraints getConstraints(int x, int y, int anchor) {

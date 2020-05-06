@@ -21,7 +21,7 @@ import java.time.format.FormatStyle;
 import javax.swing.border.EmptyBorder;
 
 //Declaration class "MakeRemoveAppiontment"
-public class MakeRemoveAppointment extends JFrame {
+public class SetAvailability extends JFrame {
     
     //Declaration instance variables class "MakeRemoveAppointment"
     private JLabel appointmentLabel;
@@ -36,7 +36,7 @@ public class MakeRemoveAppointment extends JFrame {
     private JButton submitButton;
 
     //constructor class "MakeRemoveAppointment"
-    public MakeRemoveAppointment() {
+    public SetAvailability() {
         //attempt to set system look and feel
         try {
             UIManager.setLookAndFeel(
@@ -95,7 +95,7 @@ public class MakeRemoveAppointment extends JFrame {
         Dimension bxd = new Dimension(150, 35);//comboBox dimensions
         appointmentLabel.setHorizontalAlignment(SwingConstants.CENTER);
         appointmentLabel.setVerticalAlignment(SwingConstants.CENTER);
-        appointmentLabel.setText("Make/Remove Appointment");
+        appointmentLabel.setText("Set Availability");
         Font font = new Font("Calibri", Font.BOLD, 20);
         appointmentLabel.setFont(font);
         subjectLabel.setText("Subject:");
@@ -103,7 +103,7 @@ public class MakeRemoveAppointment extends JFrame {
         timeLabel.setText("Subject");
         availabilityButton.setText("View Aavailability");
         availabilityButton.setPreferredSize(bd);
-        appointmentButton.setText("Remove Appointment");
+        appointmentButton.setText("Remove Availability");
         appointmentButton.setPreferredSize(bd);
         submitButton.setText("Submit");
         submitButton.setPreferredSize(bd);
@@ -127,8 +127,8 @@ public class MakeRemoveAppointment extends JFrame {
         
         //Jlabel Panel
         JPanel labelPanel = new JPanel();
-        labelPanel.setBorder(new EmptyBorder(30, 0, 0, 0));
         labelPanel.setLayout(new BorderLayout());
+        labelPanel.setBorder(new EmptyBorder(25, 0, 0, 0));
         labelPanel.add(appointmentLabel, BorderLayout.CENTER);
         
         
@@ -150,7 +150,7 @@ public class MakeRemoveAppointment extends JFrame {
                 getConstraints(1, 2, GridBagConstraints.LINE_END));
         //JButton Panel
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBorder(new EmptyBorder(0, 0, 25, 0));
+        buttonPanel.setBorder(new EmptyBorder(0, 0, 30, 0));
         buttonPanel.add(availabilityButton,
                 getConstraints(0, 0, GridBagConstraints.LINE_END));
         buttonPanel.add(appointmentButton,

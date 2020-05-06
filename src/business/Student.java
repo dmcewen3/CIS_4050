@@ -17,6 +17,11 @@ public class Student {
     private String major;
     private int year;
     
+    //default constructor
+    public Student() {
+        
+    }
+    
     //constructor
     public Student(int studentID, String firstName, String lastName, String major, int year){
         
@@ -27,6 +32,8 @@ public class Student {
         this.year = year;
         
     }
+
+    
 
     /**
      * @return the studentID

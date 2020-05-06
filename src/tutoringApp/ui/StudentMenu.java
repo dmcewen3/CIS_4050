@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
@@ -89,7 +90,7 @@ public class StudentMenu extends JFrame {
             //todo button action logic
         });
         logoutButton.addActionListener((ActionEvent) -> {
-            //todo button action logic
+            doLogoutButton();
         });
         
         //declaration containing panel
@@ -118,6 +119,14 @@ public class StudentMenu extends JFrame {
         
         //return components
         return menuPanel;       
+    }
+    
+    
+    private void doLogoutButton() {
+        JOptionPane.showMessageDialog(rootPane, "Logged Out Successfully",
+                "Logout", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+        
     }
     
     //private method to create GridBagConstraints "dynamic"
