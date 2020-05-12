@@ -78,6 +78,16 @@ Create Table Student_Section (
 	foreign key (CRN) references Section(CRN)
 );
 
+Create Table Schedule (
+	ScheduleID int auto_increment primary key,
+	SlotID int,
+	CRN int,
+	StudentID int,
+	foreign key (SlotID) references Availability(SlotID),
+	foreign key (CRN) references Section(CRN),
+	foreign key (StudentID) references Student(StudentID)
+);
+
 
 
 
