@@ -1,6 +1,7 @@
 
 //import the necessary packages
 package tutoringApp.ui;
+import business.Admin;
 import business.Student;
 import business.Tutor;
 import java.awt.BorderLayout;
@@ -125,6 +126,9 @@ public class LoginFrame extends JFrame {
         }else if (user instanceof Tutor){
             this.dispose();
             TutorMenu frame = new TutorMenu();
+        }else if (user instanceof Admin){
+            this.dispose();
+            AdminMenu frame = new AdminMenu();
         }
     }
     

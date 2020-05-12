@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package tutoringApp.ui;
 
-import business.Tutor;
+//import the necessary packages
+package tutoringApp.ui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -14,27 +9,26 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
-/**
- *
- * 
- */
-public class TutorMenu extends JFrame{
+public class AdminMenu extends JFrame {
     
-    private JButton availabilityButton;
+    
     private JButton reportsButton;
-    private JButton appointmentButton;
+    private JButton availabilityButton;
     private JButton logoutButton;
-    private JLabel tutorLabel;
+    private JLabel adminLabel;
     
-    public TutorMenu(){
+    //constructor class "LoginFrame"
+    public AdminMenu() {
+        //attempt to set system look and feel
         try {
             UIManager.setLookAndFeel(
                     UIManager.getSystemLookAndFeelClassName());
@@ -42,82 +36,99 @@ public class TutorMenu extends JFrame{
                  IllegalAccessException | UnsupportedLookAndFeelException e) {
             System.out.println(e);
         }
-        
+        /*
+          set window size, title, location, default close opertation,
+          initiate window components, and make visible
+        */
         setTitle("Tutoring Center App");
         setSize(500, 300);
         setLocationByPlatform(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        
         setLayout(new BorderLayout());
         add(initComponents(), BorderLayout.CENTER);
         
-        setVisible(true);  
+        setVisible(true);        
     }
-
+    
+    //private method to create and return frame components
     private JPanel initComponents() {
+        
+        //declare instance variables for frame components
         
         availabilityButton = new JButton();
         reportsButton = new JButton();
-        appointmentButton = new JButton();
         logoutButton = new JButton();
-        tutorLabel = new JLabel();
-        
+        adminLabel = new JLabel();
+
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE); 
         
+        // set button dimensions and default text
         Dimension d = new Dimension(150,35);
-        availabilityButton.setText("Set Availability");
+        Dimension ld = new Dimension(250,35);
+        availabilityButton.setText("View Availability");
         availabilityButton.setPreferredSize(d);
         reportsButton.setText("Reports");
         reportsButton.setPreferredSize(d);
-        appointmentButton.setText("View Appointments");
-        appointmentButton.setPreferredSize(d);
         logoutButton.setText("Logout");
         logoutButton.setPreferredSize(d);
-        tutorLabel.setText("Tutor Menu");
-        tutorLabel.setPreferredSize(d);
-        tutorLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        tutorLabel.setVerticalAlignment(SwingConstants.CENTER);
+        adminLabel.setText("Administration Menu");
+        adminLabel.setPreferredSize(ld);
+        adminLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        adminLabel.setVerticalAlignment(SwingConstants.CENTER);
         Font font = new Font("Calibri", Font.BOLD, 20);
-        tutorLabel.setFont(font);
+        adminLabel.setFont(font);
         
+    
+        
+        
+        //action listener for the StudentMenu buttons
         availabilityButton.addActionListener((ActionEvent) -> {
-            this.dispose();
-            Tutor tutor = new Tutor();
-            TableFrame availability = new  TableFrame(tutor);
+            //todo button action logic
+            
         });
         reportsButton.addActionListener((ActionEvent) -> {
-            //todo
-            StudentTutorReport frame = new StudentTutorReport();
-        });
-        appointmentButton.addActionListener((ActionEvent) -> {
-            //todo
+            //todo button action logic
         });
         logoutButton.addActionListener((ActionEvent) -> {
-            
-            super.dispose();
             doLogoutButton();
         });
         
+        //declaration containing panel
         JPanel menuPanel = new JPanel();
         
+        //JLabel panel
+        JPanel labelPanel = new JPanel();
+        labelPanel.setLayout(new BorderLayout());
+        labelPanel.add(adminLabel, BorderLayout.CENTER);
+        labelPanel.setBorder(new EmptyBorder(30, 0, 0, 0));
+        
+
+        
+        
+        
+        //JButton panel
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridBagLayout());
-        buttonPanel.add(tutorLabel,
-                getConstraints(0, 0, GridBagConstraints.LINE_END));
         buttonPanel.add(availabilityButton, 
-                getConstraints(0, 1, GridBagConstraints.LINE_END));
+                getConstraints(0, 0, GridBagConstraints.LINE_END));
         buttonPanel.add(reportsButton, 
-                getConstraints(0, 2, GridBagConstraints.LINE_END));
-        buttonPanel.add(appointmentButton, 
-                getConstraints(0, 3, GridBagConstraints.LINE_END));
+                getConstraints(0, 1, GridBagConstraints.LINE_END));
         buttonPanel.add(logoutButton,
-                getConstraints(0, 4, GridBagConstraints.LINE_END));
+                getConstraints(0, 2, GridBagConstraints.LINE_END));
         
+        
+
+        // add panel to containing panel
         menuPanel.setLayout(new BorderLayout());
+        menuPanel.add(labelPanel, BorderLayout.NORTH);
         menuPanel.add(buttonPanel, BorderLayout.CENTER);
         
-        return menuPanel; 
+        //return components
+        return menuPanel;       
     }
+    
     
     private void doLogoutButton() {
         JOptionPane.showMessageDialog(rootPane, "Logged Out Successfully",
@@ -126,6 +137,7 @@ public class TutorMenu extends JFrame{
         
     }
     
+    //private method to create GridBagConstraints "dynamic"
     private GridBagConstraints getConstraints(int x, int y, int anchor) {
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(5, 5, 0, 5);
@@ -135,4 +147,9 @@ public class TutorMenu extends JFrame{
         return c;
     }
     
+    
+    
+    
 }
+
+

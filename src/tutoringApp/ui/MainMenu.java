@@ -1,34 +1,18 @@
 
 //import the necessary packages
 package tutoringApp.ui;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.WindowConstants;
 
 //declaration class "LoginFrame"
 
+import business.Admin;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
@@ -108,8 +92,9 @@ public class MainMenu extends JFrame {
         
         adminButton.addActionListener((ActionEvent) -> {
             //todo button action logic
-//            LoginFrame login = new LoginFrame();
-//            this.dispose();
+            Admin admin = new Admin();
+            LoginFrame login = new LoginFrame(admin);
+            this.dispose();
         });
         
         //declaration containing panel
