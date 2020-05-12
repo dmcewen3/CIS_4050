@@ -1,6 +1,7 @@
 
 //import the necessary packages
 package tutoringApp.ui;
+import business.Student;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -25,8 +26,11 @@ public class StudentMenu extends JFrame {
     private JButton logoutButton;
     private JLabel studentLabel;
     
+    
     //constructor class "LoginFrame"
     public StudentMenu() {
+        
+      
         //attempt to set system look and feel
         try {
             UIManager.setLookAndFeel(
@@ -83,11 +87,14 @@ public class StudentMenu extends JFrame {
         
         //action listener for the StudentMenu buttons
         schedulingButton.addActionListener((ActionEvent) -> {
-            //todo button action logic
+            //todo button action
+            Student student = new Student();
+            TableFrame table = new TableFrame(student);
             
         });
         reportsButton.addActionListener((ActionEvent) -> {
             //todo button action logic
+            StudentTutorReport frame = new StudentTutorReport();
         });
         logoutButton.addActionListener((ActionEvent) -> {
             doLogoutButton();

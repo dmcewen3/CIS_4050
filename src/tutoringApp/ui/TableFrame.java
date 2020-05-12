@@ -72,10 +72,10 @@ public class TableFrame extends JFrame {
         
         if (user instanceof Student) {
             this.dispose();
-            StudentMenu frame = new StudentMenu();
+            //StudentMenu frame = new StudentMenu();
         }else if (user instanceof Tutor){
             this.dispose();
-            TutorMenu frame = new TutorMenu();
+            //TutorMenu frame = new TutorMenu();
         }
     }
     

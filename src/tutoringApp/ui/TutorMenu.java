@@ -81,7 +81,7 @@ public class TutorMenu extends JFrame{
         tutorLabel.setFont(font);
         
         availabilityButton.addActionListener((ActionEvent) -> {
-            this.dispose();
+            
             Tutor tutor = new Tutor();
             TableFrame availability = new  TableFrame(tutor);
         });
@@ -91,6 +91,7 @@ public class TutorMenu extends JFrame{
         });
         appointmentButton.addActionListener((ActionEvent) -> {
             //todo
+            ViewAppointment frame = new ViewAppointment();
         });
         logoutButton.addActionListener((ActionEvent) -> {
             

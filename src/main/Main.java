@@ -9,5 +9,9 @@ public class Main {
         //SetAvailability frame = new SetAvailability();
         //TutorMenu frame = new TutorMenu();
         //AdminMenu frame = new AdminMenu();
+        //ViewAppointment frame = new ViewAppointment();
+        //StudentTutorReport frame = new StudentTutorReport();
+        
+     
     }
 }
