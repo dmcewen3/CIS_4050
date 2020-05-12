@@ -69,14 +69,14 @@ public class TableFrame extends JFrame {
     }
     
         private void doSubmitButton(Object user){
-        
-        if (user instanceof Student) {
+            this.dispose();
+        //if (user instanceof Student) {
             this.dispose();
             //StudentMenu frame = new StudentMenu();
-        }else if (user instanceof Tutor){
+        //}else if (user instanceof Tutor){
             this.dispose();
             //TutorMenu frame = new TutorMenu();
-        }
+        //}
     }
     
     private JPanel buildButtonPanel() {
