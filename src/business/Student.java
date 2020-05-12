@@ -15,7 +15,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private String major;
-    private int year;
+    private String year;
     
     //default constructor
     public Student() {
@@ -23,7 +23,7 @@ public class Student {
     }
     
     //constructor
-    public Student(int studentID, String firstName, String lastName, String major, int year){
+    public Student(int studentID, String firstName, String lastName, String major, String year){
         
         this.studentID = studentID;
         this.firstName = firstName;
@@ -94,14 +94,14 @@ public class Student {
     /**
      * @return the year
      */
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
     /**
      * @param year the year to set
      */
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 }

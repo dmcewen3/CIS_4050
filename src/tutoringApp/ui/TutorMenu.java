@@ -5,6 +5,7 @@
  */
 package tutoringApp.ui;
 
+import business.Tutor;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -23,7 +24,7 @@ import javax.swing.WindowConstants;
 
 /**
  *
- * @author David
+ * 
  */
 public class TutorMenu extends JFrame{
     
@@ -81,7 +82,8 @@ public class TutorMenu extends JFrame{
         
         availabilityButton.addActionListener((ActionEvent) -> {
             this.dispose();
-            TableFrame availability = new  TableFrame();
+            Tutor tutor = new Tutor();
+            TableFrame availability = new  TableFrame(tutor);
         });
         reportsButton.addActionListener((ActionEvent) -> {
             //todo

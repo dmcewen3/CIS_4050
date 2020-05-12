@@ -1,5 +1,7 @@
 //import the necessary packages/classes
 package tutoringApp.ui;
+import business.Student;
+import business.Tutor;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -19,10 +21,11 @@ public class TableFrame extends JFrame {
     private TableModel tableModel;
     private JTable availabilityTable;
     private JButton doneButton;
+    private Object user;
     
 
     //constructor class "TableFrame"
-    public TableFrame() {
+    public TableFrame(Object user) {
         //attempt to set system look and feel
         try {
             UIManager.setLookAndFeel(
@@ -35,6 +38,7 @@ public class TableFrame extends JFrame {
           set window size, title, location, default close opertation,
           initiate window components, and make visible
          */
+        this.user = user;
         setTitle("Tutoring Center App");
         setSize(700, 350);
         setLocationByPlatform(true);
@@ -64,6 +68,17 @@ public class TableFrame extends JFrame {
         return availabilityTable;
     }
     
+        private void doSubmitButton(Object user){
+        
+        if (user instanceof Student) {
+            this.dispose();
+            StudentMenu frame = new StudentMenu();
+        }else if (user instanceof Tutor){
+            this.dispose();
+            TutorMenu frame = new TutorMenu();
+        }
+    }
+    
     private JPanel buildButtonPanel() {
         
         //create button panel
@@ -72,6 +87,10 @@ public class TableFrame extends JFrame {
        doneButton = new JButton();
        doneButton.setText("Done");
        buttonPanel.add(doneButton);
+       
+       doneButton.addActionListener((ActionEvent) -> {
+           doSubmitButton(this.user);
+       });
        
        return buttonPanel;
         

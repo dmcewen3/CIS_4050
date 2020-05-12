@@ -7,7 +7,7 @@ public class Tutor {
     private int employeeID;
     private String firstName;
     private String lastName;
-    private String[] subjects;
+    private String year;
     
     //default constructor
     public Tutor() {
@@ -15,12 +15,12 @@ public class Tutor {
     }
     
     //constructor
-    public Tutor(int employeeID, String firstName, String lastName, String [] subjects){
+    public Tutor(int employeeID, String firstName, String lastName, String year){
         
         this.employeeID = employeeID;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.subjects = subjects;
+        this.year = year;
         
         
     }
@@ -39,8 +39,8 @@ public class Tutor {
         return lastName;
     }
 
-    public String[] getSubjects() {
-        return subjects;
+    public String getYear() {
+        return year;
     }
 
     public void setEmployeeID(int employeeID) {
@@ -55,8 +55,8 @@ public class Tutor {
         this.lastName = lastName;
     }
 
-    public void setSubjects(String[] subjects) {
-        this.subjects = subjects;
+    public void setSubjects(String year) {
+        this.year = year;
     }
 
     

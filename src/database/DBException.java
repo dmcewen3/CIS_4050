@@ -7,7 +7,7 @@ package database;
 
 /**
  *
- * @author David
+ * 
  */
 
 //For specifying exceptions from the db, useful for testing
