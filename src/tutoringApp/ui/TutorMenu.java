@@ -90,7 +90,7 @@ public class TutorMenu extends JFrame{
             StudentTutorReport frame = new StudentTutorReport();
         });
         appointmentButton.addActionListener((ActionEvent) -> {
-            //todo
+            //todo 
             ViewAppointment frame = new ViewAppointment();
         });
         logoutButton.addActionListener((ActionEvent) -> {

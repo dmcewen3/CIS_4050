@@ -12,11 +12,14 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 //Declaration class "ReportMenu"
 public class ReportMenu extends JFrame {
@@ -26,6 +29,10 @@ public class ReportMenu extends JFrame {
     private JLabel reportLabel;
     private JLabel reportTypeLabel;
     private JComboBox reportBox;
+    private DefaultTableModel tableModel;
+    private JTable table;
+    private Object[][] data;
+    private String[] columnNames = {"Appointment Number", "Tutor","CRN","Time Slot"};
     
     
     //constructor class "ReportMenu"
@@ -98,9 +105,11 @@ public class ReportMenu extends JFrame {
         
         //JComboBox panel
         JPanel boxPanel = new JPanel();
-        boxPanel.setLayout(new GridBagLayout());
-        boxPanel.add(reportBox, 
-                getConstraints(0, 0, GridBagConstraints.LINE_END));
+        data = FrameUtil.getAllApoointments();
+        tableModel = new DefaultTableModel(data, columnNames);
+        table = new JTable(tableModel);
+        JScrollPane pane = new JScrollPane(table);
+        boxPanel.add(pane);
         
         //JButton panel
         JPanel buttonPanel = new JPanel();

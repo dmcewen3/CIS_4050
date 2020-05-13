@@ -5,6 +5,8 @@
  */
 package database;
 
+import business.Appointment;
+import business.Session;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,10 +35,48 @@ public class database {
         
     }
     
+    public static Appointment getAppointmentFromRow(ResultSet rs) throws SQLException {
+        
+        int ScheduleID = rs.getInt(1);
+        int SlotID = rs.getInt(2);
+        int CRN = rs.getInt(3);
+        int StudentID = rs.getInt(4);
+        
+        Appointment student = new Appointment(ScheduleID, SlotID, CRN, StudentID);
+        
+        return student;
+        
+    }
+    
+    public static Session getSessionFromRow(ResultSet rs) throws SQLException {
+        
+        int SessionID = rs.getInt(1);
+        String StartTime = rs.getString(2);
+        String EndTime = rs.getString(3);
+        String Topic = rs.getString(4);
+        int TutorID = rs.getInt(5);
+        int CRN = rs.getInt(6);
+        
+        Session session = new Session(SessionID, StartTime, EndTime, Topic, TutorID, CRN);
+        
+        return session;
+        
+    }
+    
     public static List<Student> getAllStudents() throws DBException {
         String sql = "SELECT * FROM Student ORDER BY StudentID";
         List<Student> students = new ArrayList<>();
         Connection connection = connectionManager.getConnection();
+        try{
+            if (connection.isValid(0)){
+                System.out.println("Connected successfully");
+            }
+            else{
+                System.out.print("Could not connect.");
+            }
+        } catch (SQLException e) {
+            System.out.print("Could not connect.");
+        }
         try (PreparedStatement ps = connection.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
@@ -149,4 +189,57 @@ public class database {
         }
     }
     
+    public static List<Appointment> getAllAppointments() throws DBException {
+        String sql = "SELECT * FROM Schedule ORDER BY ScheduleID";
+        List<Appointment> appointments = new ArrayList<>();
+        Connection connection = connectionManager.getConnection();
+        try{
+            if (connection.isValid(0)){
+                System.out.println("Connected successfully");
+            }
+            else{
+                System.out.print("Could not connect.");
+            }
+        } catch (SQLException e) {
+            System.out.print("Could not connect.");
+        }
+        try (PreparedStatement ps = connection.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Appointment s = getAppointmentFromRow(rs);
+                appointments.add(s);
+            }
+            rs.close();
+            return appointments;
+        } catch (SQLException e) {
+            throw new DBException(e);
+        }
+    }
+    
+    public static List<Session> getAllSessions() throws DBException {
+        String sql = "SELECT * FROM Session ORDER BY SessionID";
+        List<Session> sessions = new ArrayList<>();
+        Connection connection = connectionManager.getConnection();
+        try{
+            if (connection.isValid(0)){
+                System.out.println("Connected successfully");
+            }
+            else{
+                System.out.print("Could not connect.");
+            }
+        } catch (SQLException e) {
+            System.out.print("Could not connect.");
+        }
+        try (PreparedStatement ps = connection.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Session s = getSessionFromRow(rs);
+                sessions.add(s);
+            }
+            rs.close();
+            return sessions;
+        } catch (SQLException e) {
+            throw new DBException(e);   
+        }
+    }
 }

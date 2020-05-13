@@ -27,7 +27,7 @@ class TableModel extends AbstractTableModel {
      "Sally Johnson", "Tom Thomas", "Sally Strothers","Ben Karabinus",
     "",""},
     {"3:30", "Steve Smith",
-     "Sally Johnson", "Tom Thomas", "Sally Strothers","Ben Karabinus",
+     "Sally Johnson", "Tom Thomas", "John Smith","David McEwen",
     "",""}
 };
 

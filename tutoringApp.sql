@@ -88,6 +88,14 @@ Create Table Schedule (
 	foreign key (StudentID) references Student(StudentID)
 );
 
+INSERT INTO Student (FirstName, LastName, Major, Year) 
+VALUES 
+("David", "McEwen", "CIS", "Senior"),
+("John", "Smith", "ACC", "Junior"),
+("Jane", "Rhodes", "FIN", "Sophomore");
+
+
+
 
 
 

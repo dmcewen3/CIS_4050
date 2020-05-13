@@ -25,8 +25,8 @@ public class connectionManager {
         else {
             try {
                 // set the db url, username, and password
-                String url = "jdbc:mysql://localhost:3306/mma";
-                String username = "mma_user";
+                String url = "jdbc:mysql://localhost:3306/tutoring_app";
+                String username = "root";
                 String password = "sesame";
 
                 // get and return connection
